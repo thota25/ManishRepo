@@ -8,8 +8,8 @@ def getFtpPublishProfile(def publishProfilesJson) {
 }
 
 node {
-  withEnv(['AZURE_SUBSCRIPTION_ID=<subscription_id>',
-        'AZURE_TENANT_ID=<tenant_id>']) {
+  withEnv(['AZURE_SUBSCRIPTION_ID=12d41f04-dcd1-4240-99cc-533fc4fab388',
+        'AZURE_TENANT_ID=15adb380-17f9-4412-ab40-7445cc49b7e1']) {
     stage('init') {
       checkout scm
     }
@@ -19,13 +19,13 @@ node {
     }
   
     stage('deploy') {
-      def resourceGroup = '<resource_group>'
-      def webAppName = '<app_name>'
+      def resourceGroup = 'DefaultResourceGroup-EUS'
+      def webAppName = 'srik'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: '<service_princial>', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+      withCredentials([usernamePassword(credentialsId: '18f7cb2a-c602-4bd6-88b4-21222bcd68a4', passwordVariable: '4f25bc37-390a-4b29-a1de-c50ad821ae34', usernameVariable: '5863d309-ac61-436d-b489-64321483ad87')]) {
        sh '''
-          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
-          az account set -s $AZURE_SUBSCRIPTION_ID
+          az login --service-principal -u 5863d309-ac61-436d-b489-64321483ad87 -p 4f25bc37-390a-4b29-a1de-c50ad821ae34 -t 15adb380-17f9-4412-ab40-7445cc49b7e1
+          az account set -s 12d41f04-dcd1-4240-99cc-533fc4fab388
         '''
       }
       // get publish settings
