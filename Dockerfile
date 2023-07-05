@@ -1,4 +1,4 @@
-FROM maven:3.5.4-jdk-8-alpineas build
+FROM maven:3.5.4-jdk-8-alpine as build
 
 COPY ./pom.xml ./pom.xml
 
