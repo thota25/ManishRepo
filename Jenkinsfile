@@ -5,7 +5,7 @@ def getFtpPublishProfile(def publishProfilesJson) {
   for (p in pubProfiles)
     if (p['publishMethod'] == 'FTP')
       return [url: p.publishUrl, username: p.userName, password: p.userPWD]
-}
+} 
 
 node {
   withEnv(['AZURE_SUBSCRIPTION_ID=12d41f04-dcd1-4240-99cc-533fc4fab388',
